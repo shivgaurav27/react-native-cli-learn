@@ -1,66 +1,89 @@
-import React , {useState}from 'react'
-import { View , StyleSheet} from 'react-native';
-import {  Input , Image , Button} from 'react-native-elements';
+import { Formik, Field } from 'formik';
+import React, { useState } from 'react'
+import { View, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { Input, Image, Button } from 'react-native-elements';
+import FormikTextField from '../../../common/FormikTextField';
+import * as yup from 'yup'
+
+const loginValidationSchema = yup.object().shape({
+  email: yup.string().email("please enter valid email").required("email is required"),
+  password: yup.string().required("password is required")
+})
+
 
 const Login = ({ navigation }) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+
   return (
-    <View style={styles.container}>
-         <Image
+    <KeyboardAvoidingView  behavior="padding" style={styles.container}>
+      <Image
         source={{
           uri:
             "https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/06/shopping-online.jpg",
         }}
         style={{ width: 200, height: 200, borderRadius: 10, marginBottom: 20 }}
       />
-        <View style={styles.inputContainer}>
-        <Input
-          placeholder="Email"
-          autoFocus
-          type="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-        />
-        <Input
-          placeholder="Password"
-          autoFocus
-          type="password"
-          secureTextEntry
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-        />
-      </View>
-      <Button containerStyle={styles.button} title="Login"  />
-      <Button
-        containerStyle={styles.button}
-        type="outline"
-        title="Register"
-        onPress={() => navigation.navigate("Register")}
-      />
+     
+       
+        <Formik initialValues={{ email: "" }}
+          validationSchema={loginValidationSchema}
+          onSubmit={values => console.log(values)}
+        >
+          {({
+
+            handleSubmit,
+            isValid,
+          }) => (
+            <>
+              <Field
+                component={FormikTextField}
+                name="email"
+                placeholder="email"
+                keyboardType="email-address"
+
+              />
+              <Field
+                component={FormikTextField}
+                name="password"
+                placeholder="password"
+                secureTextEntry
+              />
+              <Button containerStyle={styles.button} title="Login" title="submit" onPress={handleSubmit} disabled={!isValid} />
+              <Button
+                containerStyle={styles.button}
+                type="outline"
+                title="Register"
+                onPress={() => navigation.navigate("Register")}
+              />
+
+            </>
+
+          )}
+
+        </Formik>
+      </KeyboardAvoidingView>
+
+
 
 
   
-    </View>
   );
 };
 
 export default Login;
 
 const styles = StyleSheet.create({
-    container: {
-        padding:10,
-        justifyContent:"center",
-        alignItems:"center",
-        backgroundColor:"#fff",
-      },
-      inputContainer: {
-        width: 300,
-      },
-      button: {
-        width: 200,
-        marginTop: 10,
-      },
-     
-     
+  container: {
+    flex:1,
+    padding: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
+  },
+  button: {
+    width: 200,
+    marginTop: 10,
+    justifyContent:"center",
+  },
+
+
 })
