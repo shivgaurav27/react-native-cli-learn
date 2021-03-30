@@ -81,10 +81,11 @@ export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
   },
   inputContainer: {
     width: 300,
