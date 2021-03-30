@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     errorText: {
         fontSize: 16,
         color: 'red',
-        textAlign:"center"
+        marginLeft:"5%"
         
     },
     errorInput: {
