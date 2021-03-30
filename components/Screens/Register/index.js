@@ -1,59 +1,78 @@
-import React, { useState } from "react";
-import { KeyboardAvoidingView } from "react-native";
-import { StyleSheet, View } from "react-native";
-import { Button, Input, Text } from "react-native-elements";
+import React, {useState} from 'react';
+import {Formik, Field} from 'formik';
 
-const RegisterScreen = (props) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+import {KeyboardAvoidingView} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {Button, Input, Text} from 'react-native-elements';
+import FormikTextField from '../../../common/FormikTextField';
 
+import * as yup from 'yup';
 
+const initialValues = {
+  name: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
 
+const loginValidationSchema = yup.object().shape({
+  name: yup.string().required('Full name is required'),
+  email: yup
+    .string()
+    .email('Please enter valid email')
+    .required('Email is required'),
+  password: yup.string().required('Password is required'),
+  confirmPassword: yup.string().when('password', {
+    is: val => (val && val.length > 0 ? true : false),
+    then: yup.string().oneOf([yup.ref('password')], 'Password mismatch'),
+  }),
+});
+
+const RegisterScreen = props => {
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <Text h3 style={{ marginBottom: 40 }}>
+      <Text h3 style={{marginBottom: 40}}>
         Create Account
       </Text>
-      <View style={styles.inputContainer}>
-        <Input
-          placeholder="Full Name"
-          autoFocus
-          type="text"
-          value={name}
-          onChangeText={(text) => setName(text)}
-        />
-        <Input
-          placeholder="Email"
-          autoFocus
-          type="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-        />
-        <Input
-          placeholder="Password"
-          autoFocus
-          type="password"
-          value={password}
-          secureTextEntry
-          onChangeText={(text) => setPassword(text)}
-        />
-        <Input
-          placeholder="Confirm Password"
-          autoFocus
-          type="confirmPassword"
-          value={confirmPassword}
-          secureTextEntry
-          onChangeText={(text) => setConfirmPassword(text)}
-        />
-      </View>
-      <Button
-        containerStyle={styles.button}
-        raised
-        title="Register"
-        // onPress={register}
-      />
+      <Formik
+        initialValues={initialValues}
+        validationSchema={loginValidationSchema}
+        onSubmit={values => console.log(values)}>
+        {({handleSubmit, isValid}) => (
+          <>
+            <Field
+              component={FormikTextField}
+              name="name"
+              placeholder="full name"
+            />
+            <Field
+              component={FormikTextField}
+              name="email"
+              placeholder="email"
+              keyboardType="email-address"
+            />
+            <Field
+              component={FormikTextField}
+              name="password"
+              placeholder="password"
+              secureTextEntry
+            />
+            <Field
+              component={FormikTextField}
+              name="confirmPassword"
+              placeholder="confirm password"
+              secureTextEntry
+            />
+            <Button
+              containerStyle={styles.button}
+              disabled={!isValid}
+              raised
+              title="Register"
+              // onPress={register}
+            />
+          </>
+        )}
+      </Formik>
     </KeyboardAvoidingView>
   );
 };
@@ -62,11 +81,10 @@ export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
-  
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 10,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
   inputContainer: {
     width: 300,
