@@ -1,11 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import Login from './components/Screens/Login'
+import Login from './components/Screens/Login';
+import Register from './components/Screens/Register'
 
 const App = () => {
   return (
     <View>
-      <Login />
+      {/* <Login /> */}
+      <Register />
     </View>
   )
 }
