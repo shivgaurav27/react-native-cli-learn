@@ -2,7 +2,7 @@ import React , {useState}from 'react'
 import { View , StyleSheet} from 'react-native';
 import {  Input , Image , Button} from 'react-native-elements';
 
-const Login = () => {
+const Login = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
   return (
@@ -36,7 +36,7 @@ const Login = () => {
         containerStyle={styles.button}
         type="outline"
         title="Register"
-        // onPress={() => navigation.navigate("Register")}
+        onPress={() => navigation.navigate("Register")}
       />
 
 
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         padding:10,
         justifyContent:"center",
         alignItems:"center",
-        backgroundColor:"#fff"
+        backgroundColor:"#fff",
       },
       inputContainer: {
         width: 300,

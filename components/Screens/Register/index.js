@@ -3,7 +3,7 @@ import { KeyboardAvoidingView } from "react-native";
 import { StyleSheet, View } from "react-native";
 import { Button, Input, Text } from "react-native-elements";
 
-const RegisterScreen = () => {
+const RegisterScreen = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
