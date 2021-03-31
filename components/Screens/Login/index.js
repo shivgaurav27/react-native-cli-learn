@@ -4,6 +4,7 @@ import {View, StyleSheet, KeyboardAvoidingView} from 'react-native';
 import {Input, Image, Button} from 'react-native-elements';
 import FormikTextField from '../../../common/FormikTextField';
 import * as yup from 'yup';
+import CustomButton from '../../../common/CustomButton';
 
 const loginValidationSchema = yup.object().shape({
   email: yup
@@ -42,10 +43,8 @@ const Login = ({navigation}) => {
               placeholder="password"
               secureTextEntry
             />
-            <Button
-              containerStyle={styles.button}
+            <CustomButton
               title="Login"
-              title="submit"
               onPress={handleSubmit}
               disabled={!isValid}
             />
