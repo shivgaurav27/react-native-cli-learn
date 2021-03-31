@@ -5,6 +5,7 @@ import {KeyboardAvoidingView} from 'react-native';
 import {StyleSheet, View} from 'react-native';
 import {Button, Input, Text} from 'react-native-elements';
 import FormikTextField from '../../../common/FormikTextField';
+import {spacing} from '../../../utils/Sizes';
 
 import * as yup from 'yup';
 
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 10,
+    padding: spacing.md,
     backgroundColor: '#fff',
   },
   inputContainer: {

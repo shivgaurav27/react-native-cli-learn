@@ -5,6 +5,7 @@ import {Input, Image, Button} from 'react-native-elements';
 import FormikTextField from '../../../common/FormikTextField';
 import * as yup from 'yup';
 import CustomButton from '../../../common/CustomButton';
+import {spacing} from '../../../utils/Sizes';
 
 const loginValidationSchema = yup.object().shape({
   email: yup
@@ -66,7 +67,7 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: spacing.md,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
