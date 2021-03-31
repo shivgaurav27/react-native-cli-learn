@@ -8,6 +8,7 @@ import FormikTextField from '../../../common/FormikTextField';
 import {spacing} from '../../../utils/Sizes';
 
 import * as yup from 'yup';
+import CustomButton from '../../../common/CustomButton';
 
 const initialValues = {
   name: '',
@@ -29,7 +30,7 @@ const loginValidationSchema = yup.object().shape({
   }),
 });
 
-const RegisterScreen = props => {
+const RegisterScreen = ({navigation}) => {
   return (
     <KeyboardAvoidingView style={styles.container}>
       <Text h3 style={{marginBottom: 40}}>
@@ -64,12 +65,13 @@ const RegisterScreen = props => {
               placeholder="confirm password"
               secureTextEntry
             />
-            <Button
+            <CustomButton
               containerStyle={styles.button}
               disabled={!isValid}
               raised
               title="Register"
-              // onPress={register}
+              onPress={handleSubmit}
+              disabled={!isValid}
             />
           </>
         )}

@@ -1,5 +1,5 @@
 import {Formik, Field} from 'formik';
-import React, {useState} from 'react';
+import React from 'react';
 import {View, StyleSheet, KeyboardAvoidingView} from 'react-native';
 import {Input, Image, Button} from 'react-native-elements';
 import FormikTextField from '../../../common/FormikTextField';
@@ -44,17 +44,18 @@ const Login = ({navigation}) => {
               placeholder="password"
               secureTextEntry
             />
-            <CustomButton
-              title="Login"
-              onPress={handleSubmit}
-              disabled={!isValid}
-            />
-            <Button
-              containerStyle={styles.button}
-              type="outline"
-              title="Register"
-              onPress={() => navigation.navigate('Register')}
-            />
+            <View style={styles.buttonContainer}>
+              <CustomButton
+                title="Login"
+                onPress={handleSubmit}
+                disabled={!isValid}
+              />
+              <CustomButton
+                type="outline"
+                title="Register"
+                onPress={() => navigation.push('Register')}
+              />
+            </View>
           </>
         )}
       </Formik>
@@ -73,9 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     margin: 10,
   },
-  button: {
-    width: 200,
-    marginTop: 10,
-    justifyContent: 'center',
+  buttonContainer: {
+    flexDirection: 'column',
   },
 });
