@@ -8,6 +8,7 @@ import Basket from '../components/Screens/Basket';
 import ContactUs from '../components/Screens/ContactUs';
 import Categories from '../components/Screens/Categories';
 import MyList from '../components/Screens/MyList';
+import Search from '../components/Screens/Search';
 
 const Stack = createStackNavigator();
 const screenOptionStyle = {
@@ -37,4 +38,40 @@ const ContactStackNavigator = () => {
   );
 };
 
-export {MainStackNavigator, ContactStackNavigator};
+const CategoriesStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Categories" component={Categories} />
+    </Stack.Navigator>
+  );
+};
+const SearchStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Search" component={Search} />
+    </Stack.Navigator>
+  );
+};
+const BasketStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Basket" component={Basket} />
+    </Stack.Navigator>
+  );
+};
+const MyListStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen name="MyList" component={MyList} />
+    </Stack.Navigator>
+  );
+};
+
+export {
+  MainStackNavigator,
+  CategoriesStackNavigator,
+  ContactStackNavigator,
+  SearchStackNavigator,
+  BasketStackNavigator,
+  MyListStackNavigator
+};
