@@ -29,7 +29,10 @@ const Login = ({navigation}) => {
       <Formik
         initialValues={{email: '', password: ''}}
         validationSchema={loginValidationSchema}
-        onSubmit={values => console.log(values)}>
+        onSubmit={values => {
+          console.log(values);
+          navigation.replace('Home');
+        }}>
         {({handleSubmit, isValid}) => (
           <>
             <Field
