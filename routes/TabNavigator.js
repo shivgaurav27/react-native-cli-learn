@@ -1,9 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-// import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import {
   MainStackNavigator,
@@ -22,17 +20,21 @@ const BottomTabNavigator = () => {
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           if (route.name === 'Home') {
-            return(
-              <Ionicons name='ios-information-circle' size={size} color={color} />
-            )
+            iconName = focused
+            ? 'home'
+            : 'home';
           }
-         
+          if(route.name==="Search"){
+            iconName = focused ? 'search1' : 'search1';
+          }
+          return <FontAwesome name={iconName} size={size} color={color} />;
+
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
-      }}
+          activeTintColor: 'tomato',
+          inactiveTintColor: 'gray',
+        }}
       
       >
       <Tab.Screen name="Home" component={MainStackNavigator} />
