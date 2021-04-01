@@ -1,18 +1,24 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+// ./screens/Home.js
 
-import DrawerNavigator from '../../../routes/DrawerNavigator';
+import React from 'react';
+import {View, Button, Text, StyleSheet} from 'react-native';
 
 const Home = ({navigation}) => {
-  console.log(navigation);
   return (
-    <View>
-      <Text>Home component</Text>
-      <DrawerNavigator />
+    <View style={styles.center}>
+      <Text>This is the home screen</Text>
+      <Button title="Go to About Screen" />
     </View>
   );
 };
 
-export default Home;
+const styles = StyleSheet.create({
+  center: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+});
 
-const styles = StyleSheet.create({});
+export default Home;
