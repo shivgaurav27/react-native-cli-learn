@@ -10,6 +10,9 @@ import Categories from '../components/Screens/Categories';
 import MyList from '../components/Screens/MyList';
 import Search from '../components/Screens/Search';
 
+import Header from '../common/Header';
+
+
 const Stack = createStackNavigator();
 const screenOptionStyle = {
   headerStyle: {
@@ -21,8 +24,10 @@ const screenOptionStyle = {
 
 const MainStackNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen name="Home" component={Home} />
+    <Stack.Navigator screenOptions={screenOptionStyle} >
+      <Stack.Screen name="Home" component={Home} 
+      options={{ headerTitle: props => <Header {...props} /> }}
+      />
       <Stack.Screen name="Basket" component={Basket} />
       <Stack.Screen name="Categories" component={Categories} />
       <Stack.Screen name="MyList" component={MyList} />
