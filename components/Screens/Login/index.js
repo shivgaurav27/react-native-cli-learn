@@ -1,10 +1,10 @@
-import {Formik, Field} from 'formik';
+import {Field, Formik} from 'formik';
 import React from 'react';
-import {View, StyleSheet, KeyboardAvoidingView} from 'react-native';
+import {KeyboardAvoidingView, StyleSheet, View} from 'react-native';
 import {Image} from 'react-native-elements';
-import FormikTextField from '../../../common/FormikTextField';
 import * as yup from 'yup';
 import CustomButton from '../../../common/CustomButton';
+import FormikTextField from '../../../common/FormikTextField';
 import {spacing} from '../../../utils/Sizes';
 
 const loginValidationSchema = yup.object().shape({
@@ -17,7 +17,6 @@ const loginValidationSchema = yup.object().shape({
 
 const Login = ({navigation}) => {
   const handleLoginSubmit = async values => {
-    console.log('values :::===>', values);
     const {email, password} = values;
     if (email == 'admin@admin.com' && password == 'admin') {
       navigation.replace('DrawerNavigator');
