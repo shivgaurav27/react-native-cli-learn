@@ -4,7 +4,7 @@ import {fontSizes} from '../utils/Sizes'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import {withNavigation} from '@react-navigation/compat'
 
-const Header = ({navigation}) => {
+const Header = ({navigation , title}) => {
     const openMenu = ()=>{
         navigation.openDrawer()
     }
@@ -13,7 +13,7 @@ const Header = ({navigation}) => {
             {/* icons  for the menu */}
             <FontAwesome name="align-justify" size={24} color="black"  style={styles.icon} onPress={openMenu}/>
             <Text style={styles.headerText}>
-                My  custom header 
+                {title}
             </Text>
         </View>
     )
