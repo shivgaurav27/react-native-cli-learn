@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {fontSizes, Heights} from '../utils/Sizes'
 
 import {
   MainStackNavigator,
@@ -33,6 +33,9 @@ const BottomTabNavigator = () => {
           if(route.name==="My List"){
             iconName = focused ? 'list' : 'list';
           }
+          if(route.name==="Categories"){
+            iconName = focused ? 'th' : 'th';
+          }
           return <FontAwesome name={iconName} size={size} color={color} />;
 
         },
@@ -40,7 +43,12 @@ const BottomTabNavigator = () => {
       tabBarOptions={{
           activeTintColor: 'tomato',
           inactiveTintColor: 'gray',
-        }}
+          labelStyle:{
+            fontSize:fontSizes.md
+          },
+          
+        }
+      }
       
       >
       <Tab.Screen name="Home" component={MainStackNavigator} />
