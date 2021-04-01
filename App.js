@@ -11,7 +11,29 @@ const App = () => {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      <DrawerNavigator />
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          title: 'Login',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{
+          title: 'Register',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="DrawerNavigator"
+        component={DrawerNavigator}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
     </NavigationContainer>
   );
 };

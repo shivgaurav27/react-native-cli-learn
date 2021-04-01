@@ -16,6 +16,17 @@ const loginValidationSchema = yup.object().shape({
 });
 
 const Login = ({navigation}) => {
+
+  const handleSubmit = async(values)=>{
+    console.log("values :::===>",values);
+    const {email,password}=values;
+    if(email=="admin@admin.com"&& password=="admin"){
+      navigation.replace("DrawerNavigator")
+    }else{
+      alert("please enter correct details admin")
+    }
+  }
+
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <Image
@@ -29,10 +40,7 @@ const Login = ({navigation}) => {
       <Formik
         initialValues={{email: '', password: ''}}
         validationSchema={loginValidationSchema}
-        onSubmit={values => {
-          console.log(values);
-          navigation.replace('Home');
-        }}>
+        onSubmit={handleSubmit}>
         {({handleSubmit, isValid}) => (
           <>
             <Field
