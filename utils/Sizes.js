@@ -20,5 +20,5 @@ export const Heights = {
   lg: 24,
   xl: 32,
   xxl: 40,
-  xxxl:50,
+  xxxl: 50,
 };

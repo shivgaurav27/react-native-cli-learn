@@ -1,7 +1,7 @@
 import {Formik, Field} from 'formik';
 import React from 'react';
 import {View, StyleSheet, KeyboardAvoidingView} from 'react-native';
-import {Input, Image, Button} from 'react-native-elements';
+import {Image} from 'react-native-elements';
 import FormikTextField from '../../../common/FormikTextField';
 import * as yup from 'yup';
 import CustomButton from '../../../common/CustomButton';
@@ -16,16 +16,15 @@ const loginValidationSchema = yup.object().shape({
 });
 
 const Login = ({navigation}) => {
-
-  const handleSubmit = async(values)=>{
-    console.log("values :::===>",values);
-    const {email,password}=values;
-    if(email=="admin@admin.com"&& password=="admin"){
-      navigation.replace("DrawerNavigator")
-    }else{
-      alert("please enter correct details admin")
+  const handleLoginSubmit = async values => {
+    console.log('values :::===>', values);
+    const {email, password} = values;
+    if (email == 'admin@admin.com' && password == 'admin') {
+      navigation.replace('DrawerNavigator');
+    } else {
+      alert('please enter correct details admin');
     }
-  }
+  };
 
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -40,7 +39,7 @@ const Login = ({navigation}) => {
       <Formik
         initialValues={{email: '', password: ''}}
         validationSchema={loginValidationSchema}
-        onSubmit={handleSubmit}>
+        onSubmit={handleLoginSubmit}>
         {({handleSubmit, isValid}) => (
           <>
             <Field

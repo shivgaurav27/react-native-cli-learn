@@ -1,11 +1,11 @@
 // ./navigation/DrawerNavigator.js
 
-import React from "react";
+import React from 'react';
 
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import { ContactStackNavigator } from "./StackNavigator";
-import TabNavigator from "./TabNavigator";
+import {ContactStackNavigator} from './StackNavigator';
+import TabNavigator from './TabNavigator';
 
 const Drawer = createDrawerNavigator();
 

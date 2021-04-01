@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Formik, Field} from 'formik';
 
 import {KeyboardAvoidingView} from 'react-native';
-import {StyleSheet, View} from 'react-native';
-import {Button, Input, Text} from 'react-native-elements';
+import {StyleSheet} from 'react-native';
+import {Text} from 'react-native-elements';
 import FormikTextField from '../../../common/FormikTextField';
 import {spacing} from '../../../utils/Sizes';
 
@@ -71,7 +71,6 @@ const RegisterScreen = ({navigation}) => {
               raised
               title="Register"
               onPress={handleSubmit}
-              disabled={!isValid}
             />
           </>
         )}

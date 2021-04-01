@@ -12,7 +12,6 @@ import Search from '../components/Screens/Search';
 
 import Header from '../common/Header';
 
-
 const Stack = createStackNavigator();
 const screenOptionStyle = {
   headerStyle: {
@@ -24,10 +23,11 @@ const screenOptionStyle = {
 
 const MainStackNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={screenOptionStyle} >
-      <Stack.Screen name="Home" component={Home} 
-      options={
-        { headerTitle: props => <Header props={props} title="Home" /> }}
+    <Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{headerTitle: props => <Header props={props} title="Home" />}}
       />
     </Stack.Navigator>
   );
@@ -36,9 +36,12 @@ const MainStackNavigator = () => {
 const ContactStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen name="ContactUs" component={ContactUs} 
-      options={
-        { headerTitle: props => <Header props={props} title="ContactUs" /> }}
+      <Stack.Screen
+        name="ContactUs"
+        component={ContactUs}
+        options={{
+          headerTitle: props => <Header props={props} title="ContactUs" />,
+        }}
       />
     </Stack.Navigator>
   );
@@ -47,9 +50,12 @@ const ContactStackNavigator = () => {
 const CategoriesStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen name="Categories" component={Categories}
-      options={
-        { headerTitle: props => <Header props={props} title="Categories" /> }}
+      <Stack.Screen
+        name="Categories"
+        component={Categories}
+        options={{
+          headerTitle: props => <Header props={props} title="Categories" />,
+        }}
       />
     </Stack.Navigator>
   );
@@ -57,9 +63,12 @@ const CategoriesStackNavigator = () => {
 const SearchStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen name="Search" component={Search} 
-      options={
-        { headerTitle: props => <Header props={props} title="search" /> }}
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{
+          headerTitle: props => <Header props={props} title="search" />,
+        }}
       />
     </Stack.Navigator>
   );
@@ -67,10 +76,12 @@ const SearchStackNavigator = () => {
 const BasketStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen name="Basket" component={Basket} 
-      options={
-        { headerTitle: props => <Header props={props} title="Basket" /> }}
-      
+      <Stack.Screen
+        name="Basket"
+        component={Basket}
+        options={{
+          headerTitle: props => <Header props={props} title="Basket" />,
+        }}
       />
     </Stack.Navigator>
   );
@@ -78,9 +89,12 @@ const BasketStackNavigator = () => {
 const MyListStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen name="MyList" component={MyList} 
-      options={
-        { headerTitle: props => <Header props={props} title="MyList" /> }}
+      <Stack.Screen
+        name="MyList"
+        component={MyList}
+        options={{
+          headerTitle: props => <Header props={props} title="MyList" />,
+        }}
       />
     </Stack.Navigator>
   );
@@ -92,5 +106,5 @@ export {
   ContactStackNavigator,
   SearchStackNavigator,
   BasketStackNavigator,
-  MyListStackNavigator
+  MyListStackNavigator,
 };
