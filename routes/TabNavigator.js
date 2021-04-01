@@ -24,8 +24,14 @@ const BottomTabNavigator = () => {
             ? 'home'
             : 'home';
           }
+          if(route.name==="Basket"){
+            iconName = focused ? 'shopping-basket' : 'shopping-basket';
+          }
           if(route.name==="Search"){
-            iconName = focused ? 'search1' : 'search1';
+            iconName = focused ? 'search' : 'search';
+          }
+          if(route.name==="My List"){
+            iconName = focused ? 'list' : 'list';
           }
           return <FontAwesome name={iconName} size={size} color={color} />;
 
