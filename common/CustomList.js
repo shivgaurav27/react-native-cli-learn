@@ -5,15 +5,15 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import {Image} from 'react-native-elements';
 import {Colors, fontSizes, paddingRight, spacing} from '../utils/Sizes';
+import AddButton from './AddButton';
 import Card from './Card';
 
 const Item = ({item, onPress, backgroundColor, textColor}) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+  <View onPress={onPress} style={[styles.item, backgroundColor]}>
     <View style={styles.itemContainer}>
       <Card style={styles.cardContainer}>
         <Image
@@ -37,9 +37,12 @@ const Item = ({item, onPress, backgroundColor, textColor}) => (
           <Text style={styles.amount}>Rs.{item.Amount}</Text>
           <Text style={styles.crossedText}>175</Text>
         </View>
+        <View style={styles.buttonContainer}>
+          <AddButton />
+        </View>
       </View>
     </View>
-  </TouchableOpacity>
+  </View>
 );
 
 const CustomListItem = ({DATA}) => {
@@ -48,7 +51,6 @@ const CustomListItem = ({DATA}) => {
 
   const renderItem = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#fff' : '#fff';
-    // const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
     const color = item.id === selectedId ? 'white' : 'black';
 
     return (
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
   },
   item: {
     width: '96%',
-    height: 150,
+    height: 200,
     marginVertical: 8,
     marginHorizontal: 8,
     display: 'flex',
@@ -93,13 +95,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
+    paddingBottom: 10,
   },
   titleContainer: {
     padding: 10,
     width: '70%',
   },
   image: {
-    width: 100,
+    width: '100%',
     height: 100,
   },
   darkGreyText: {
@@ -109,7 +112,6 @@ const styles = StyleSheet.create({
     color: Colors.SoftPeach,
   },
   subTitleContainer: {
-    padding: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -129,6 +131,7 @@ const styles = StyleSheet.create({
   },
   amount: {
     paddingRight: paddingRight.md,
+    fontSize: fontSizes.md,
   },
   itemContainer: {
     flexDirection: 'row',
@@ -138,5 +141,9 @@ const styles = StyleSheet.create({
   cardContainer: {
     height: '100%',
     width: '30%',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
 });

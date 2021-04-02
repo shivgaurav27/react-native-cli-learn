@@ -27,6 +27,7 @@ export const Colors = {
   DarkGrey: '#b1adad',
   SoftPeach: '#ebe6e5',
   white: '#ffffff',
+  buttonColor: '#0783C3',
 };
 
 export const paddingRight = {
