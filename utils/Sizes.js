@@ -22,3 +22,15 @@ export const Heights = {
   xxl: 40,
   xxxl: 50,
 };
+
+export const Colors = {
+  DarkGrey: '#b1adad',
+  SoftPeach: '#ebe6e5',
+  white: '#ffffff',
+};
+
+export const paddingRight = {
+  sm: 8,
+  md: 16,
+  lg: 32,
+};

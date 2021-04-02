@@ -9,20 +9,34 @@ import {
   View,
 } from 'react-native';
 import {Image} from 'react-native-elements';
-import CustomButton from '../common/CustomButton';
+import {Colors, fontSizes, paddingRight, spacing} from '../utils/Sizes';
+import Card from './Card';
 
 const Item = ({item, onPress, backgroundColor, textColor}) => (
   <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-    <Image
-      source={{
-        uri: item.url,
-      }}
-      style={styles.imgContainer}
-    />
-    <View style={styles.titleContainer}>
-      <Text style={[styles.title, textColor]}>{item.title}</Text>
-      <View style={styles.buttonContainer}>
-        <CustomButton title="Add" width={100} backgroundColor="red" />
+    <View style={styles.itemContainer}>
+      <Card style={styles.cardContainer}>
+        <Image
+          style={styles.image}
+          source={{
+            uri: item.url,
+          }}
+        />
+      </Card>
+      <View style={styles.titleContainer}>
+        <View style={styles.subTitleContainer}>
+          <Text style={styles.darkGreyText}>FRESHO</Text>
+          <Text style={styles.darkGreyText}>7 hrs</Text>
+        </View>
+        <Text style={[styles.title, textColor]}>{item.title}</Text>
+
+        <View style={styles.quantityContainer}>
+          <Text style={styles.darkGreyText}>{item.qty}</Text>
+        </View>
+        <View style={styles.priceContainer}>
+          <Text style={styles.amount}>Rs.{item.Amount}</Text>
+          <Text style={styles.crossedText}>175</Text>
+        </View>
       </View>
     </View>
   </TouchableOpacity>
@@ -33,7 +47,8 @@ const CustomListItem = ({DATA}) => {
   const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({item}) => {
-    const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
+    const backgroundColor = item.id === selectedId ? '#fff' : '#fff';
+    // const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
     const color = item.id === selectedId ? 'white' : 'black';
 
     return (
@@ -67,27 +82,62 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   item: {
-    padding: 10,
+    width: '96%',
+    height: 150,
     marginVertical: 8,
-    marginHorizontal: 10,
+    marginHorizontal: 8,
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
-    fontSize: 32,
+    fontSize: 18,
   },
   titleContainer: {
-    marginLeft: 20,
+    padding: 10,
+    // marginLeft: 20,
+    width: '70%',
   },
-  imgContainer: {
+  image: {
     width: 100,
-    height: 120,
-    borderRadius: 10,
-    marginBottom: 20,
+    height: 100,
   },
-  buttonContainer: {
-    width: '100%',
-    top: '30%',
-    left: '100%',
+  darkGreyText: {
+    color: Colors.DarkGrey,
+  },
+  SoftPeachText: {
+    color: Colors.SoftPeach,
+  },
+  subTitleContainer: {
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  quantityContainer: {
+    fontSize: fontSizes.md,
+    backgroundColor: Colors.SoftPeach,
+    borderRadius: 5,
+    padding: spacing.sm,
+  },
+  priceContainer: {
+    padding: 10,
+    flexDirection: 'row',
+  },
+  crossedText: {
+    textDecorationLine: 'underline line-through',
+    color: Colors.DarkGrey,
+  },
+  amount: {
+    paddingRight: paddingRight.md,
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 5,
+  },
+  cardContainer: {
+    height: '100%',
+    width: '30%',
   },
 });

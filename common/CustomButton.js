@@ -9,6 +9,7 @@ const CustomButton = props => {
     buttonBackgroundColor,
     width,
     backgroundColor,
+    borderRadius,
     ...rest
   } = props;
   return (
