@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     padding: 10,
-    // marginLeft: 20,
     width: '70%',
   },
   image: {
