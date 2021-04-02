@@ -23,8 +23,7 @@ const AddButton = props => {
         backgroundColor && {backgroundColor: backgroundColor},
       ]}>
       <Text style={styles.appButtonText} {...rest}>
-        {/* {title} */}
-        Add
+        {title}
       </Text>
     </TouchableOpacity>
   );

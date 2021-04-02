@@ -38,7 +38,7 @@ const Item = ({item, onPress, backgroundColor, textColor}) => (
           <Text style={styles.crossedText}>175</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <AddButton />
+          <AddButton title="Add" />
         </View>
       </View>
     </View>
