@@ -18,10 +18,10 @@ const AddButton = props => {
     item,
     addItem,
     removeItem,
+    fontSize,
     ...rest
   } = props;
-  console.log('cartItems in add btn ', cartItems);
-  const matchId = cartItems.find(cartItem => cartItem.id === item.id);
+  const matchId = cartItems?.find(cartItem => cartItem.id === item.id);
 
   if (matchId === undefined) {
     return (
@@ -32,6 +32,8 @@ const AddButton = props => {
           styles.appButtonContainer,
           disabled && styles.appButtonDisabled,
           width && {width: width},
+          fontSize && {fontSize: fontSize},
+          borderRadius && {borderRadius: borderRadius},
           backgroundColor && {backgroundColor: backgroundColor},
         ]}>
         <Text style={styles.appButtonText} {...rest}>
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
     width: 100,
   },
   appButtonText: {
-    fontSize: 12,
+    fontSize: fontSizes.md,
     color: '#fff',
     fontWeight: 'bold',
     alignSelf: 'center',
