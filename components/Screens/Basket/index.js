@@ -28,7 +28,7 @@ const Basket = props => {
               width={150}
               borderRadius={0}
               title="Checkout"
-              // onPress={totalAmount(cartItems)}
+              onPress={() => navigation.navigate('Delivery')}
             />
           </View>
         </View>

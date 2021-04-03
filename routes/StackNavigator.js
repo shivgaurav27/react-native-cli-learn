@@ -1,16 +1,16 @@
 // ./navigation/StackNavigator.js
 
-import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-
-import Home from '../components/Screens/Home';
+import React from 'react';
+import Header from '../common/Header';
 import Basket from '../components/Screens/Basket';
-import ContactUs from '../components/Screens/ContactUs';
 import Categories from '../components/Screens/Categories';
+import ContactUs from '../components/Screens/ContactUs';
+import Delivery from '../components/Screens/Delivery';
+import Home from '../components/Screens/Home';
 import MyList from '../components/Screens/MyList';
 import Search from '../components/Screens/Search';
-
-import Header from '../common/Header';
+import {fontSizes, spacing} from '../utils/Sizes';
 
 const Stack = createStackNavigator();
 const screenOptionStyle = {
@@ -81,6 +81,21 @@ const BasketStackNavigator = () => {
         component={Basket}
         options={{
           headerTitle: props => <Header props={props} title="Basket" />,
+        }}
+      />
+      <Stack.Screen
+        name="Delivery"
+        component={Delivery}
+        options={{
+          title: 'Delivery options',
+          headerTintColor: '#333',
+          headerTitleStyle: {
+            paddingLeft: spacing.xxl,
+            fontWeight: 'bold',
+            fontSize: fontSizes.md,
+            color: '#333',
+            letterSpacing: 1,
+          },
         }}
       />
     </Stack.Navigator>

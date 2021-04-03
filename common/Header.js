@@ -1,8 +1,8 @@
+import {withNavigation} from '@react-navigation/compat';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {fontSizes} from '../utils/Sizes';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {withNavigation} from '@react-navigation/compat';
+import {fontSizes} from '../utils/Sizes';
 
 const Header = ({navigation, title}) => {
   const openMenu = () => {
@@ -14,7 +14,7 @@ const Header = ({navigation, title}) => {
       <FontAwesome
         name="align-justify"
         size={24}
-        color="black"
+        color="#333"
         style={styles.icon}
         onPress={openMenu}
       />
