@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgb(5, 93, 151)',
     position: 'absolute',
-    bottom: 20,
+    bottom: 0,
     width: '100%',
   },
   subContainer: {
