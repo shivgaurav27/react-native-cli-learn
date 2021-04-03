@@ -20,17 +20,25 @@ const Basket = props => {
   return (
     <View style={styles.center}>
       <CustomListItem DATA={cartItems} />
-      <View style={styles.checkoutContainer}>
-        <View style={styles.subContainer}>
-          <Text style={styles.amountStyle}>Rs. {totalAmount(cartItems)}</Text>
-          <AddButton
-            width={150}
-            borderRadius={0}
-            title="Checkout"
-            // onPress={totalAmount(cartItems)}
-          />
+      {cartItems.length > 0 ? (
+        <View style={styles.checkoutContainer}>
+          <View style={styles.subContainer}>
+            <Text style={styles.amountStyle}>Rs. {totalAmount(cartItems)}</Text>
+            <AddButton
+              width={150}
+              borderRadius={0}
+              title="Checkout"
+              // onPress={totalAmount(cartItems)}
+            />
+          </View>
         </View>
-      </View>
+      ) : (
+        <View style={styles.noItemContainer}>
+          <Text style={styles.noItemTextStyle}>
+            Please Add Items to your basket
+          </Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -46,6 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
+    paddingBottom: 70,
   },
   checkoutContainer: {
     flex: 1,
@@ -64,5 +73,11 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.md,
     padding: 20,
     fontWeight: 'bold',
+  },
+  noItemContainer: {
+    flex: 1,
+  },
+  noItemTextStyle: {
+    fontSize: fontSizes.lg,
   },
 });
