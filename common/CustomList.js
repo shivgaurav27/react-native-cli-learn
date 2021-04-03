@@ -14,7 +14,14 @@ import {Colors, fontSizes, paddingRight, spacing} from '../utils/Sizes';
 import AddButton from './AddButton';
 import Card from './Card';
 
-const Item = ({item, onPress, backgroundColor, textColor, addItem}) => (
+const Item = ({
+  item,
+  onPress,
+  backgroundColor,
+  textColor,
+  addItem,
+  cartItems,
+}) => (
   <View onPress={onPress} style={[styles.item, backgroundColor]}>
     <View style={styles.itemContainer}>
       <Card style={styles.cardContainer}>
@@ -40,7 +47,12 @@ const Item = ({item, onPress, backgroundColor, textColor, addItem}) => (
           <Text style={styles.crossedText}>175</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <AddButton title="Add" onPress={() => addItem(item)} />
+          <AddButton
+            title="Add"
+            onPress={() => addItem(item)}
+            cartItems={cartItems}
+            item={item}
+          />
         </View>
       </View>
     </View>
@@ -48,7 +60,7 @@ const Item = ({item, onPress, backgroundColor, textColor, addItem}) => (
 );
 
 const CustomListItem = props => {
-  const {DATA, addItem} = props;
+  const {DATA, addItem, cartItems} = props;
   const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({item}) => {
@@ -59,6 +71,7 @@ const CustomListItem = props => {
       <Item
         item={item}
         addItem={addItem}
+        cartItems={cartItems}
         onPress={() => setSelectedId(item.id)}
         backgroundColor={{backgroundColor}}
         textColor={{color}}
@@ -82,7 +95,11 @@ const mapDispatchToProps = dispatch => ({
   addItem: item => dispatch(addItem(item)),
 });
 
-export default connect(null, mapDispatchToProps)(CustomListItem);
+const mapStateToProps = ({cart: {cartItems}}) => ({
+  cartItems,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomListItem);
 
 const styles = StyleSheet.create({
   container: {
