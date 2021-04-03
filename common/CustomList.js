@@ -8,11 +8,13 @@ import {
   View,
 } from 'react-native';
 import {Image} from 'react-native-elements';
+import {connect} from 'react-redux';
+import {addItem} from '../redux/cart/cart.action';
 import {Colors, fontSizes, paddingRight, spacing} from '../utils/Sizes';
 import AddButton from './AddButton';
 import Card from './Card';
 
-const Item = ({item, onPress, backgroundColor, textColor}) => (
+const Item = ({item, onPress, backgroundColor, textColor, addItem}) => (
   <View onPress={onPress} style={[styles.item, backgroundColor]}>
     <View style={styles.itemContainer}>
       <Card style={styles.cardContainer}>
@@ -38,15 +40,15 @@ const Item = ({item, onPress, backgroundColor, textColor}) => (
           <Text style={styles.crossedText}>175</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <AddButton title="Add" />
+          <AddButton title="Add" onPress={() => addItem(item)} />
         </View>
       </View>
     </View>
   </View>
 );
 
-const CustomListItem = ({DATA}) => {
-  console.log('Data', DATA);
+const CustomListItem = props => {
+  const {DATA, addItem} = props;
   const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({item}) => {
@@ -56,6 +58,7 @@ const CustomListItem = ({DATA}) => {
     return (
       <Item
         item={item}
+        addItem={addItem}
         onPress={() => setSelectedId(item.id)}
         backgroundColor={{backgroundColor}}
         textColor={{color}}
@@ -75,7 +78,11 @@ const CustomListItem = ({DATA}) => {
   );
 };
 
-export default CustomListItem;
+const mapDispatchToProps = dispatch => ({
+  addItem: item => dispatch(addItem(item)),
+});
+
+export default connect(null, mapDispatchToProps)(CustomListItem);
 
 const styles = StyleSheet.create({
   container: {
