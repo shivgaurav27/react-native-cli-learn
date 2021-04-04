@@ -10,7 +10,7 @@ import {
 import {Image} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {addItem} from '../redux/cart/cart.action';
-import {Colors, fontSizes, paddingRight, spacing} from '../utils/Sizes';
+import {Colors, fontSizes, spacing} from '../utils/Sizes';
 import AddButton from './AddButton';
 import Card from './Card';
 
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     color: Colors.DarkGrey,
   },
   amount: {
-    paddingRight: paddingRight.md,
+    paddingRight: spacing.md,
     fontSize: fontSizes.md,
   },
   itemContainer: {
