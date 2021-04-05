@@ -1,19 +1,20 @@
-import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {connect} from 'react-redux';
 import {fontSizes} from '../utils/Sizes';
-
 import {
-  MainStackNavigator,
-  CategoriesStackNavigator,
   BasketStackNavigator,
-  SearchStackNavigator,
+  CategoriesStackNavigator,
+  MainStackNavigator,
   MyListStackNavigator,
+  SearchStackNavigator,
 } from './StackNavigator';
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabNavigator = () => {
+const BottomTabNavigator = props => {
+  const {cartItems} = props;
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -51,10 +52,14 @@ const BottomTabNavigator = () => {
       <Tab.Screen
         name="Basket"
         component={BasketStackNavigator}
-        options={{tabBarBadge: 3}}
+        options={{tabBarBadge: cartItems?.length}}
       />
     </Tab.Navigator>
   );
 };
 
-export default BottomTabNavigator;
+const mapStateToProps = ({cart: {cartItems}}) => ({
+  cartItems,
+});
+
+export default connect(mapStateToProps)(BottomTabNavigator);
